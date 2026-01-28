@@ -120,42 +120,31 @@ TWOJ_IP_SERWERA:5901
 
 ## Część 3: Instalacja Moltbot
 
-### 3.1 Zainstaluj Node.js 22
+> Oficjalna dokumentacja: **[docs.molt.bot](https://docs.molt.bot/)**
+
+### 3.1 Zainstaluj Moltbot
+
+Jedna komenda instaluje wszystko:
 
 ```bash
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-sudo apt install -y nodejs
+curl -fsSL https://molt.bot/install.sh | bash
 ```
 
-Sprawdź wersję:
-```bash
-node --version  # powinno pokazać v22.x
-```
+Skrypt automatycznie:
+- Zainstaluje wymagane zależności
+- Skonfiguruje Moltbot
+- Uruchomi kreator onboardingu
 
-### 3.2 Zainstaluj Moltbot
-
-```bash
-sudo npm install -g moltbot@latest
-```
-
-### 3.3 Skonfiguruj Moltbot
-
-```bash
-moltbot onboard --install-daemon
-```
+### 3.2 Konfiguracja
 
 Kreator przeprowadzi Cię przez:
 - Konfigurację klucza API (Anthropic/OpenAI)
 - Wybór kanałów (Telegram, WhatsApp, Discord, itp.)
 - Konfigurację workspace
 
-### 3.4 Uruchom Moltbot
+### 3.3 Sprawdź status
 
 ```bash
-# Uruchom gateway
-moltbot gateway --port 18789 --verbose
-
-# Sprawdź status
 moltbot doctor
 ```
 
@@ -209,7 +198,7 @@ vncserver -kill :1 && vncserver :1 -geometry 1920x1080 -depth 24
 moltbot doctor
 
 # Aktualizacja Moltbot
-moltbot update --channel stable
+moltbot update
 
 # Logi Moltbot
 journalctl -u moltbot -f
@@ -224,7 +213,7 @@ journalctl -u moltbot -f
 | VNC: czarny ekran | Sprawdź czy `~/.vnc/xstartup` ma `chmod +x` |
 | VNC: nie można połączyć | Sprawdź czy port 5901 jest otwarty w firewallu |
 | Moltbot: brak połączenia | Uruchom `moltbot doctor` i sprawdź konfigurację |
-| Node.js: zła wersja | Usuń starą wersję i zainstaluj ponownie przez nodesource |
+| Moltbot: błąd instalacji | Sprawdź czy masz curl: `sudo apt install curl` |
 
 ---
 
